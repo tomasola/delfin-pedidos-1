@@ -243,92 +243,77 @@
             </button>
             <button id="btn-save-order" class="btn btn-success">
                 💾 Guardar Pedido
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- Loading Overlay -->
-<div class="stat-card">
-    <div class="stat-value" id="stat-pending">0</div>
-    <div class="stat-label">Pendientes</div>
-</div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-        <h2 class="card-title">📋 Pedidos Guardados</h2>
-        <button id="btn-export" class="btn btn-secondary">
-            💾 Exportar
-        </button>
-    </div>
-    <div class="card-body">
-        <div id="orders-list" class="orders-list">
-            <!-- Los pedidos se cargarán aquí dinámicamente -->
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- Sección: Búsqueda -->
-<section id="search-section" class="section">
-    <div class="search-container">
-        <input type="text" id="search-input" class="search-input" placeholder="🔍 Buscar pedidos...">
-        <div class="filters">
-            <button class="filter-chip active" data-filter="all">Todos</button>
-            <button class="filter-chip" data-filter="pendiente">Pendientes</button>
-            <button class="filter-chip" data-filter="procesando">En Proceso</button>
-            <button class="filter-chip" data-filter="completado">Completados</button>
-        </div>
-    </div>
-
-    <div id="search-results" class="orders-list">
-        <!-- Los resultados se mostrarán aquí -->
-    </div>
-</section>
-
-<!-- Sección: Configuración -->
-<section id="config-section" class="section">
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">⚙️ Configuración</h2>
+                <button id="btn-export" class="btn btn-secondary">
+                    💾 Exportar
+                </button>
         </div>
         <div class="card-body">
-            <div class="form-group">
-                <label class="form-label" for="api-key-input">API Key de Google Gemini</label>
-                <input type="password" id="api-key-input" class="form-input" placeholder="Ingresa tu API key">
-                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--spacing-xs);">
-                    Obtén tu API key en <a href="https://aistudio.google.com/app/apikey" target="_blank"
-                        style="color: var(--primary-light);">Google AI Studio</a>
-                </p>
-            </div>
-
-            <button id="btn-save-config" class="btn btn-primary">
-                💾 Guardar Configuración
-            </button>
-
-            <hr style="margin: var(--spacing-lg) 0; border: none; border-top: 1px solid hsla(220, 20%, 30%, 0.5);">
-
-            <div class="form-group">
-                <label class="form-label">Gestión de Datos</label>
-                <button id="btn-clear-data" class="btn btn-danger">
-                    🗑️ Borrar Todos los Datos
-                </button>
-            </div>
-
-            <hr style="margin: var(--spacing-lg) 0; border: none; border-top: 1px solid hsla(220, 20%, 30%, 0.5);">
-
-            <div style="color: var(--text-secondary); font-size: var(--font-size-sm);">
-                <p><strong>Versión:</strong> 1.0.0</p>
-                <p><strong>Desarrollado por:</strong> Delfin Team</p>
-                <p style="margin-top: var(--spacing-sm);">
-                    Esta aplicación utiliza Google Gemini AI para extraer automáticamente datos de imágenes de
-                    pedidos.
-                </p>
+            <div id="orders-list" class="orders-list">
+                <!-- Los pedidos se cargarán aquí dinámicamente -->
             </div>
         </div>
     </div>
-</section>
+    </section>
+
+    <!-- Sección: Búsqueda -->
+    <section id="search-section" class="section">
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="🔍 Buscar pedidos...">
+            <div class="filters">
+                <button class="filter-chip active" data-filter="all">Todos</button>
+                <button class="filter-chip" data-filter="pendiente">Pendientes</button>
+                <button class="filter-chip" data-filter="procesando">En Proceso</button>
+                <button class="filter-chip" data-filter="completado">Completados</button>
+            </div>
+        </div>
+
+        <div id="search-results" class="orders-list">
+            <!-- Los resultados se mostrarán aquí -->
+        </div>
+    </section>
+
+    <!-- Sección: Configuración -->
+    <section id="config-section" class="section">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">⚙️ Configuración</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="form-label" for="api-key-input">API Key de Google Gemini</label>
+                    <input type="password" id="api-key-input" class="form-input" placeholder="Ingresa tu API key">
+                    <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--spacing-xs);">
+                        Obtén tu API key en <a href="https://aistudio.google.com/app/apikey" target="_blank"
+                            style="color: var(--primary-light);">Google AI Studio</a>
+                    </p>
+                </div>
+
+                <button id="btn-save-config" class="btn btn-primary">
+                    💾 Guardar Configuración
+                </button>
+
+                <hr style="margin: var(--spacing-lg) 0; border: none; border-top: 1px solid hsla(220, 20%, 30%, 0.5);">
+
+                <div class="form-group">
+                    <label class="form-label">Gestión de Datos</label>
+                    <button id="btn-clear-data" class="btn btn-danger">
+                        🗑️ Borrar Todos los Datos
+                    </button>
+                </div>
+
+                <hr style="margin: var(--spacing-lg) 0; border: none; border-top: 1px solid hsla(220, 20%, 30%, 0.5);">
+
+                <div style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                    <p><strong>Versión:</strong> 1.0.0</p>
+                    <p><strong>Desarrollado por:</strong> Delfin Team</p>
+                    <p style="margin-top: var(--spacing-sm);">
+                        Esta aplicación utiliza Google Gemini AI para extraer automáticamente datos de imágenes de
+                        pedidos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Navegación Inferior -->
