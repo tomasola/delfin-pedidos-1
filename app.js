@@ -3,7 +3,8 @@ const CONFIG = {
     DB_NAME: 'DelfinPedidosDB',
     DB_VERSION: 1,
     STORE_NAME: 'orders',
-    API_KEY_STORAGE: 'gemini_api_key'
+    API_KEY_STORAGE: 'gemini_api_key',
+    DEFAULT_API_KEY: 'AIzaSyBrXUXKBSGIbwFcpFl4RIR8QCv33FhUyNQ' // API Key preconfigurada
 };
 
 let db = null;
@@ -257,12 +258,12 @@ function handleFileSelect(event) {
 
 // ===== PROCESAMIENTO DE IMAGEN CON IA =====
 async function processImage(imageBlob) {
-    const apiKey = localStorage.getItem(CONFIG.API_KEY_STORAGE);
+    let apiKey = localStorage.getItem(CONFIG.API_KEY_STORAGE);
 
+    // Si no hay API key guardada, usar la predeterminada
     if (!apiKey) {
-        showNotification('Por favor, configura tu API key de Google Gemini en Configuración', 'warning');
-        navigateToSection('config');
-        return;
+        apiKey = CONFIG.DEFAULT_API_KEY;
+        localStorage.setItem(CONFIG.API_KEY_STORAGE, apiKey);
     }
 
     showLoading(true);
@@ -587,10 +588,15 @@ function handleFilterClick(event) {
 
 // ===== CONFIGURACIÓN =====
 function loadAPIKey() {
-    const apiKey = localStorage.getItem(CONFIG.API_KEY_STORAGE);
-    if (apiKey) {
-        document.getElementById('api-key-input').value = apiKey;
+    let apiKey = localStorage.getItem(CONFIG.API_KEY_STORAGE);
+
+    // Si no hay API key guardada, usar la predeterminada
+    if (!apiKey) {
+        apiKey = CONFIG.DEFAULT_API_KEY;
+        localStorage.setItem(CONFIG.API_KEY_STORAGE, apiKey);
     }
+
+    document.getElementById('api-key-input').value = apiKey;
 }
 
 function saveConfiguration() {
