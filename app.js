@@ -4,7 +4,7 @@ const CONFIG = {
     DB_VERSION: 1,
     STORE_NAME: 'orders',
     API_KEY_STORAGE: 'gemini_api_key',
-    DEFAULT_API_KEY: 'AIzaSyBrXUXKBSGIbwFcpFl4RIR8QCv33FhUyNQ' // API Key preconfigurada
+    DEFAULT_API_KEY: 'AIzaSyBOGOSEycyJF_bQtTd5WDp6Q9IgMs-9nSo' // API Key de delfin-14 (funcional)
 };
 
 let db = null;
