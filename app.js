@@ -400,6 +400,17 @@ function closeModal() {
     currentImageData = null;
 }
 
+// Función para verificar pedidos duplicados
+async function checkDuplicateOrder(orderNumber) {
+    try {
+        const orders = await getAllOrders();
+        return orders.find(order => order.orderNumber === orderNumber);
+    } catch (error) {
+        console.error('Error al verificar duplicados:', error);
+        return null;
+    }
+}
+
 async function saveOrder() {
     const orderData = {
         clientName: document.getElementById('client-name').value,
@@ -415,6 +426,28 @@ async function saveOrder() {
     };
 
     try {
+        // Verificar si ya existe un pedido con el mismo número
+        const existingOrder = await checkDuplicateOrder(orderData.orderNumber);
+
+        if (existingOrder) {
+            const replace = confirm(
+                `⚠️ PEDIDO DUPLICADO\n\n` +
+                `Ya existe un pedido con el número "${orderData.orderNumber}".\n\n` +
+                `Cliente: ${existingOrder.clientName}\n` +
+                `Fecha: ${existingOrder.date}\n\n` +
+                `¿Deseas REEMPLAZAR el pedido anterior con este nuevo?`
+            );
+
+            if (!replace) {
+                showNotification('Guardado cancelado - Pedido duplicado', 'warning');
+                return;
+            }
+
+            // Eliminar el pedido anterior
+            await deleteOrderFromDB(existingOrder.id);
+            showNotification('Pedido anterior eliminado', 'info');
+        }
+
         await saveOrderToDB(orderData);
         showNotification('Pedido guardado correctamente', 'success');
         closeModal();
