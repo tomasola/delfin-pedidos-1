@@ -365,6 +365,7 @@ Si no puedes encontrar algún campo, usa valores por defecto razonables. Respond
     } catch (error) {
         console.error('Error al procesar la imagen:', error);
         showNotification(`Error: ${error.message}`, 'error');
+        alert(`Error del Sistema: ${error.message}\n\nPor favor, comparte este mensaje con el soporte.`);
     } finally {
         showLoading(false);
     }
