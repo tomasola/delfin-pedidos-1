@@ -1,4 +1,4 @@
-export const compressImage = (base64Str: string, maxWidth = 1024, quality = 0.7): Promise<string> => {
+export const compressImage = (base64Str: string, maxWidth = 2048, quality = 0.92): Promise<string> => {
     return new Promise((resolve) => {
         const img = new Image();
         img.src = base64Str;
@@ -19,6 +19,11 @@ export const compressImage = (base64Str: string, maxWidth = 1024, quality = 0.7)
                 resolve(base64Str);
                 return;
             }
+
+            // Enable smooth image interpolation for better quality
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
             ctx.drawImage(img, 0, 0, width, height);
             resolve(canvas.toDataURL('image/jpeg', quality));
         };

@@ -362,6 +362,13 @@ export const History: React.FC = () => {
                     src={selectedRecord.croppedImage}
                     alt="Dibujo Técnico"
                     className="w-full h-auto object-contain max-h-[40vh] bg-white"
+                    style={{
+                      imageRendering: '-webkit-optimize-contrast' as any,
+                      backfaceVisibility: 'hidden',
+                      transform: 'translateZ(0)',
+                      WebkitBackfaceVisibility: 'hidden',
+                      WebkitTransform: 'translateZ(0)'
+                    }}
                   />
                 ) : (
                   <div className="h-40 flex items-center justify-center text-slate-400">Sin imagen</div>

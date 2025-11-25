@@ -28,7 +28,7 @@ const App: React.FC = () => {
         <button onClick={() => navigate('/')} className="text-slate-400 hover:text-white">
           <Home size={24} />
         </button>
-        <h1 className="text-lg font-bold text-white">Delfín 14</h1>
+        <h1 className="text-lg font-bold text-white">Etiquetas</h1>
       </header>
 
       {/* Main Content Area */}
