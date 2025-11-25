@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScannerOrders } from './components/Orders/ScannerOrders';
 import { HistoryOrders } from './components/Orders/HistoryOrders';
 // import { DashboardOrders } from './components/Orders/DashboardOrders'; // TODO
-import { Scan, List, PieChart, Settings, Home } from 'lucide-react';
+import { Scan, List, Home } from 'lucide-react';
 import { AppTab } from './types';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,8 +14,7 @@ const AnalisisPedidosApp: React.FC = () => {
         switch (activeTab) {
             case 'scan': return <ScannerOrders />;
             case 'history': return <HistoryOrders />;
-            case 'data': return <div className="p-8 text-center text-slate-400">Dashboard de Pedidos (Próximamente)</div>;
-            case 'admin': return <div className="p-8 text-center text-slate-400">Configuración (Próximamente)</div>;
+
             default: return <ScannerOrders />;
         }
     };
@@ -50,18 +49,7 @@ const AnalisisPedidosApp: React.FC = () => {
                     label="Escanear"
                     isMain
                 />
-                <NavButton
-                    active={activeTab === 'data'}
-                    onClick={() => setActiveTab('data')}
-                    icon={<PieChart size={22} />}
-                    label="Datos"
-                />
-                <NavButton
-                    active={activeTab === 'admin'}
-                    onClick={() => setActiveTab('admin')}
-                    icon={<Settings size={22} />}
-                    label="Admin"
-                />
+
             </nav>
         </div>
     );
