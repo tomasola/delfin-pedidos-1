@@ -106,7 +106,7 @@ export const ScannerOrders: React.FC = () => {
             alert(`❌ PEDIDO REPETIDO\\n\\nEl pedido \"${formData.orderNumber}\" ya existe.\\n\\nNo se puede guardar un pedido duplicado.`);
             return;
         }
-        }
+        
 
         const newRecord = {
             id: uuidv4(),
