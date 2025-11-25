@@ -356,12 +356,12 @@ export const History: React.FC = () => {
             {/* Content */}
             <div className="overflow-y-auto p-6 space-y-6">
               {/* Main Image */}
-              <div className="bg-white rounded-xl overflow-hidden border-4 border-slate-700 shadow-lg">
+              <div className="bg-white rounded-xl overflow-hidden border-4 border-slate-700 shadow-lg cursor-pointer hover:border-amber-500 transition-colors">
                 {selectedRecord.croppedImage ? (
                   <img
                     src={selectedRecord.croppedImage}
                     alt="Dibujo Técnico"
-                    className="w-full h-auto object-contain max-h-[40vh] bg-white"
+                    className="w-full h-auto object-contain max-h-[60vh] bg-white"
                     style={{
                       imageRendering: '-webkit-optimize-contrast' as any,
                       backfaceVisibility: 'hidden',
@@ -369,6 +369,8 @@ export const History: React.FC = () => {
                       WebkitBackfaceVisibility: 'hidden',
                       WebkitTransform: 'translateZ(0)'
                     }}
+                    onClick={() => window.open(selectedRecord.croppedImage, '_blank')}
+                    title="Click para ver en tamaño completo"
                   />
                 ) : (
                   <div className="h-40 flex items-center justify-center text-slate-400">Sin imagen</div>

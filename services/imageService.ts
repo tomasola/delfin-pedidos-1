@@ -1,4 +1,4 @@
-export const compressImage = (base64Str: string, maxWidth = 2048, quality = 0.92): Promise<string> => {
+export const compressImage = (base64Str: string, maxWidth = 2048): Promise<string> => {
     return new Promise((resolve) => {
         const img = new Image();
         img.src = base64Str;
@@ -25,7 +25,9 @@ export const compressImage = (base64Str: string, maxWidth = 2048, quality = 0.92
             ctx.imageSmoothingQuality = 'high';
 
             ctx.drawImage(img, 0, 0, width, height);
-            resolve(canvas.toDataURL('image/jpeg', quality));
+
+            // Use PNG for lossless compression of technical drawings
+            resolve(canvas.toDataURL('image/png'));
         };
         img.onerror = () => {
             resolve(base64Str);
